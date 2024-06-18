@@ -67,3 +67,16 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = {}
 }
+
+require'FTerm'.setup({
+    border = 'single',
+    dimensions  = {
+        height = 0.9,
+        width = 0.9,
+    },
+	cmd = 'cmd',
+})
+
+-- Example keybindings
+vim.keymap.set('n', '<F6>', '<CMD>lua require("FTerm").toggle()<CR>')
+vim.keymap.set('t', '<F6>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')

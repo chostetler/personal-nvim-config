@@ -5,7 +5,11 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'arkav/lualine-lsp-progress'
+Plug 'numToStr/FTerm.nvim'
 
+
+nnoremap <SPACE> <Nop>
+let mapleader=" "
 
 " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
 " utf-8 byte sequence
@@ -52,8 +56,8 @@ endif
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <leader>e <Plug>(coc-diagnostic-prev)
+nmap <leader>E <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
@@ -150,25 +154,6 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " provide custom statusline: lightline.vim, vim-airline
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" Mappings for CoCList
-" Show all diagnostics
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-
 filetype plugin indent on
 " show existing tab with 4 spaces width
 set tabstop=4
@@ -187,3 +172,11 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 set number
+set ignorecase
+set smartcase
+
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=grey
+set splitright
