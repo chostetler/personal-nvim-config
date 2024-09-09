@@ -80,3 +80,38 @@ require'FTerm'.setup({
 -- Example keybindings
 vim.keymap.set('n', '<F6>', '<CMD>lua require("FTerm").toggle()<CR>')
 vim.keymap.set('t', '<F6>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+
+---- Treesitter setup
+require('nvim-treesitter.configs').setup{
+    -- List of parser names
+    ensure_installed = { "c", "cpp", "python", "markdown", "lua", "cmake" },
+    highlight = {
+        enable = true,
+        disable = { "markdown" },
+    },
+}
+
+require('nvim-treesitter.configs').setup {
+    textobjects = {
+        select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["aa"] = "@parameter.outer",
+                ["ia"] = "@parameter.inner",
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
+                ["al"] = "@loop.outer",
+                ["il"] = "@loop.inner",
+            },
+            selection_modes = {
+                ['@parameter.outer'] = 'v',
+                ['@function.outer'] = 'V'
+            },
+            include_surrounding_whitespace = true,
+        },
+    },
+}
+

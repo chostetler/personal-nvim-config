@@ -6,6 +6,9 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'arkav/lualine-lsp-progress'
 Plug 'numToStr/FTerm.nvim'
+Plug 'rebelot/kanagawa.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
 
 nnoremap <SPACE> <Nop>
@@ -41,6 +44,8 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 " <C-g>u breaks current undo, please make your own choice
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" Remap Shift+Enter to Enter so that we don't accept an option
+inoremap <S-CR> <Esc>o
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -60,10 +65,10 @@ nmap <leader>e <Plug>(coc-diagnostic-prev)
 nmap <leader>E <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gd <Plug>(coc-definition)zz
+nmap <silent> gy <Plug>(coc-type-definition)zz
+nmap <silent> gi <Plug>(coc-implementation)zz
+nmap <silent> gr <Plug>(coc-references)zz
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
@@ -180,3 +185,10 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=grey
 set splitright
+
+set foldmethod=syntax
+set foldlevel=99
+highlight Folded guibg=none guifg=grey
+
+colorscheme gruvbox
+
