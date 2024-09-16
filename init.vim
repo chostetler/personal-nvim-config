@@ -186,7 +186,9 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=grey
 set splitright
 
-set foldmethod=syntax
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set foldcolumn=2
 set foldlevel=99
 highlight Folded guibg=none guifg=grey
 
