@@ -87,7 +87,7 @@ require('nvim-treesitter.configs').setup{
     ensure_installed = { "c", "cpp", "python", "markdown", "lua", "cmake" },
     highlight = {
         enable = true,
-        disable = { "markdown" },
+        disable = { },
     },
 }
 

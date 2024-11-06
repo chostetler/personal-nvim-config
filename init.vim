@@ -46,6 +46,7 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " Remap Shift+Enter to Enter so that we don't accept an option
 inoremap <S-CR> <Esc>o
+set pumheight=15
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -167,6 +168,9 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
+" Clear search highlight on ESC press
+nnoremap <silent> <Esc> <Esc>:noh<CR>
+
 call plug#end()
 
 lua require('init')
@@ -186,8 +190,7 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=grey
 set splitright
 
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+set foldmethod=manual
 set foldcolumn=2
 set foldlevel=99
 highlight Folded guibg=none guifg=grey
