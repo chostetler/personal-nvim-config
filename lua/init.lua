@@ -74,7 +74,7 @@ require'FTerm'.setup({
         height = 0.9,
         width = 0.9,
     },
-	cmd = 'cmd',
+	cmd = 'powershell',
 })
 
 -- Example keybindings
@@ -88,6 +88,7 @@ require('nvim-treesitter.configs').setup{
     highlight = {
         enable = true,
         disable = { },
+        additional_vim_regex_highlighting = { 'markdown' },
     },
 }
 
@@ -115,3 +116,13 @@ require('nvim-treesitter.configs').setup {
     },
 }
 
+
+--- Nvim-surround
+require('nvim-surround').setup({
+
+})
+
+require("gruvbox").setup({
+    italic = true,
+})
+vim.cmd("colorscheme gruvbox")

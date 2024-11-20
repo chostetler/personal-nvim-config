@@ -9,6 +9,8 @@ Plug 'numToStr/FTerm.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'kylechui/nvim-surround'
+Plug 'ellisonleao/gruvbox.nvim'
 
 
 nnoremap <SPACE> <Nop>
@@ -195,5 +197,5 @@ set foldcolumn=2
 set foldlevel=99
 highlight Folded guibg=none guifg=grey
 
-colorscheme gruvbox
+set background=dark
 
