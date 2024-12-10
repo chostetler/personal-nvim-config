@@ -1,5 +1,6 @@
 // In ~/.config/nvim/coc-settings.json
 {
+  "rust-analyzer.inlayHints.enable": false,
   "languageserver": {
     "ccls": {
       "command": "ccls",

@@ -11,6 +11,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'kylechui/nvim-surround'
 Plug 'ellisonleao/gruvbox.nvim'
+Plug 'frankroeder/parrot.nvim'
+Plug 'nvim-lua/plenary.nvim'
 
 
 nnoremap <SPACE> <Nop>
@@ -198,4 +200,5 @@ set foldlevel=99
 highlight Folded guibg=none guifg=grey
 
 set background=dark
+colorscheme gruvbox
 
