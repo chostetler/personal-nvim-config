@@ -98,13 +98,35 @@ require('lualine').setup {
   extensions = {}
 }
 
+local function get_shell_command()
+    if vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1 then
+        -- Use full path to ensure it works across different Windows setups
+        local powershell_path = vim.fn.exepath('powershell.exe')
+        local pwsh_path = vim.fn.exepath('pwsh.exe')
+        
+        if pwsh_path ~= '' then
+            -- Prefer PowerShell Core if available
+            return { pwsh_path, '-NoProfile' }
+        elseif powershell_path ~= '' then
+            -- Fall back to Windows PowerShell
+            return { powershell_path, '-NoProfile' }
+        else
+            -- Last resort
+            return { 'cmd.exe' }
+        end
+    else
+        -- Unix-like systems
+        return { os.getenv('SHELL') or '/bin/bash' }
+    end
+end
+
 require'FTerm'.setup({
     border = 'single',
     dimensions  = {
         height = 0.9,
         width = 0.9,
     },
-    cmd = os.getenv('SHELL'),
+    cmd = get_shell_command(),
 })
 
 -- Example keybindings
