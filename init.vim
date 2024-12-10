@@ -13,6 +13,7 @@ Plug 'kylechui/nvim-surround'
 Plug 'ellisonleao/gruvbox.nvim'
 Plug 'frankroeder/parrot.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.8'}
 
 
 nnoremap <SPACE> <Nop>
@@ -144,6 +145,8 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
+
+nnoremap("<leader>pt", ":PrtChatToggle")
 
 " Use CTRL-S for selections ranges
 " Requires 'textDocument/selectionRange' support of language server
