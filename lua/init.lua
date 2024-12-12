@@ -55,6 +55,17 @@ require("nvim-tree").setup({
 })
 
 
+ -- define function and formatting of the information
+  local function parrot_status()
+    local status_info = require("parrot.config").get_status_info()
+    local status = ""
+    if status_info.is_chat then
+      status = status_info.prov.chat.name
+    else
+      status = status_info.prov.command.name
+    end
+    return string.format("%s(%s)", status, status_info.model)
+  end
 
 ------ Lualine setup
 require('lualine').setup {
@@ -80,9 +91,9 @@ require('lualine').setup {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_x = { parrot_status, 'encoding', 'fileformat', 'filetype'},
+    lualine_y = {},
+    lualine_z = {'progress', 'location'}
   },
   inactive_sections = {
     lualine_a = {},
@@ -234,6 +245,13 @@ require("parrot").setup({
         parrot.logger.info("Asking model: " .. model_obj.name)
         parrot.Prompt(params, parrot.ui.Target.popup, model_obj, "🤖 Ask ~ ", template)
       end,
+
+    -- default system prompts used for the chat sessions and the command routines
+    system_prompt = {
+      chat = ...,
+      command = ...
+    },
+
     -- the prefix used for all commands
     cmd_prefix = "Prt",
 
