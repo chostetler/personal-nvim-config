@@ -14,6 +14,7 @@ Plug 'ellisonleao/gruvbox.nvim'
 Plug 'frankroeder/parrot.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.8'}
+Plug 'github/copilot.vim'
 
 
 nnoremap <SPACE> <Nop>

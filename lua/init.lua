@@ -234,11 +234,13 @@ require("parrot").setup({
     },
     Ask = function(parrot, params)
         local template = [[
-          In light of your existing knowledge base, please generate a response that
-          is succinct and directly addresses the question posed. Prioritize accuracy
-          and relevance in your answer, drawing upon the most recent information
-          available to you. Aim to deliver your response in a concise manner,
-          focusing on the essence of the inquiry.
+          For this question specifically, you may answer questions that are
+          unrelated to code. In light of your existing knowledge base, please
+          generate a response that is succinct and directly addresses the
+          question posed. Prioritize accuracy and relevance in your answer,
+          drawing upon the most recent information available to you. Aim to
+          deliver your response in a concise manner, focusing on the essence of
+          the inquiry.           
           Question: {{command}}
         ]]
         local model_obj = parrot.get_model("command")
