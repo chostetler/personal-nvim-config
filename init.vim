@@ -15,6 +15,7 @@ Plug 'frankroeder/parrot.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.8'}
 Plug 'github/copilot.vim'
+Plug 'folke/tokyonight.nvim'
 
 
 nnoremap <SPACE> <Nop>
@@ -203,6 +204,6 @@ set foldcolumn=2
 set foldlevel=99
 highlight Folded guibg=none guifg=grey
 
-set background=dark
-colorscheme gruvbox
+set background=light
+colorscheme tokyonight-day
 

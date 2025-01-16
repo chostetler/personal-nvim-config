@@ -33,7 +33,7 @@ require("gruvbox").setup({
   dim_inactive = false,
   transparent_mode = false,
 })
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme tokyonight-day")
 
 -- empty setup using defaults
 require("nvim-tree").setup()
@@ -370,3 +370,7 @@ vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Telescope 
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+
+vim.g.copilot_filetypes = {
+    markdown = false,
+}
