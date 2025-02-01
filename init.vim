@@ -16,6 +16,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.8'}
 Plug 'github/copilot.vim'
 Plug 'folke/tokyonight.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 
 nnoremap <SPACE> <Nop>
@@ -149,6 +150,8 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
 endif
 
 nnoremap("<leader>pt", ":PrtChatToggle")
+nnoremap <F1> :PrtChatToggle<CR>
+nnoremap <F2> :PrtChatNew<CR>
 
 " Use CTRL-S for selections ranges
 " Requires 'textDocument/selectionRange' support of language server
@@ -204,6 +207,7 @@ set foldcolumn=2
 set foldlevel=99
 highlight Folded guibg=none guifg=grey
 
-set background=light
-colorscheme tokyonight-day
+set background=dark
+colorscheme catppuccin
+
 
