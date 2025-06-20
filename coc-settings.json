@@ -1,16 +1,12 @@
 // In ~/.config/nvim/coc-settings.json
 {
   "rust-analyzer.inlayHints.enable": false,
-  "languageserver": {
-    "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cpp"],
-      "rootPatterns": [".ccls", "compile_commands.json"],
-      "initializationOptions": {
-        "cache": {
-          "directory": ".ccls-cache"
-        }
-      }
-    }
-  }
+  "clangd.enabled": true,
+  "clangd.path": "clangd",
+  "clangd.arguments": [
+    "--header-insertion=never",
+    "--clang-tidy",
+    "--completion-style=detailed"
+  ]
 }
+
