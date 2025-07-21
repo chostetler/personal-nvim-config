@@ -14,6 +14,8 @@ Plug('nvim-treesitter/nvim-treesitter', {['do'] = 'TSUpdate'})
 Plug('nvim-treesitter/nvim-treesitter-textobjects')
 Plug('kylechui/nvim-surround')
 Plug('folke/which-key.nvim')
+Plug('nvim-lua/plenary.nvim')
+Plug('nvim-telescope/telescope.nvim')
 
 -- AI assistance
 -- Plug('github/copilot.vim')
@@ -329,3 +331,10 @@ require('which-key').setup({
 vim.keymap.set('n', '<leader>?', function()
   require('which-key').show({ global = false })
 end, { desc = "Buffer Local Keymaps (which-key)" })
+
+-- Telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader> ', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.live_grep, { desc = 'Telescope help tags' })
