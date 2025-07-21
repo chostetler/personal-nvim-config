@@ -13,9 +13,10 @@ Plug('nvim-tree/nvim-tree.lua')  -- Keeping as requested
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = 'TSUpdate'})
 Plug('nvim-treesitter/nvim-treesitter-textobjects')
 Plug('kylechui/nvim-surround')
+Plug('folke/which-key.nvim')
 
 -- AI assistance
-Plug('github/copilot.vim')
+-- Plug('github/copilot.vim')
 
 -- Color scheme (keeping one)
 Plug('folke/tokyonight.nvim')
@@ -138,15 +139,6 @@ keymap('i', '<S-TAB>', function()
   end
 end, {expr = true})
 
--- Enter to confirm completion
-keymap('i', '<CR>', function()
-  if vim.fn['coc#pum#visible']() ~= 0 then
-    return vim.fn['coc#pum#confirm']()
-  else
-    return '<C-g>u<CR><c-r>=coc#on_enter()<CR>'
-  end
-end, {expr = true, silent = true})
-
 keymap('i', '<S-CR>', '<Esc>o')
 
 -- CoC trigger completion
@@ -201,6 +193,18 @@ keymap('n', '<C-b>', function()
     return '<C-b>'
   end
 end, {expr = true, silent = true, nowait = true})
+
+-- CoC Inlay Hints disable
+local function toggle_coc_inlay_hints()
+  -- Execute the CoC command to toggle inlay hints for current buffer
+  vim.cmd('CocCommand document.toggleInlayHint')
+end
+
+-- Create the keymap
+vim.keymap.set('n', '<leader>h', toggle_coc_inlay_hints, {
+  desc = 'Toggle CoC inlay hints',
+  silent = true
+})
 
 -- CoC range select
 keymap({'n', 'x'}, '<C-s>', '<Plug>(coc-range-select)', {silent = true})
@@ -313,3 +317,15 @@ require('nvim-surround').setup({})
 vim.g.copilot_filetypes = {
   markdown = false,
 }
+
+
+-- which-key setup
+require('which-key').setup({
+  -- You can leave this empty for default settings
+  -- or add your preferred configuration
+})
+
+-- Optional: Add a keymap to show buffer-local keymaps
+vim.keymap.set('n', '<leader>?', function()
+  require('which-key').show({ global = false })
+end, { desc = "Buffer Local Keymaps (which-key)" })
